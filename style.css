@@ -1,0 +1,1139 @@
+/* Estilos Gerais (body, h1, etc.) - ESTILOS DA GARAGEM DA BARBIE */
+body { /* Este body pode ser sobrescrito ou combinado com o de baixo */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* background-color: #eef1f5;  Comentado para usar o da garagem unificada */
+    margin: 0;
+    /* padding: 20px; Comentado */
+    color: #333333;
+    line-height: 1.6;
+    /* display: flex;  Comentado */
+    /* flex-direction: column; Comentado */
+    /* align-items: center; Comentado */
+    min-height: 100vh;
+}
+
+/* O H1 principal da página será o .sidebar h1 ou .content-area h2 */
+/* Este H1 é específico para dentro da seção da garagem da Barbie */
+#secao-garagem > h1 {
+    text-align: center;
+    color: #ff0077;
+    margin-bottom: 30px;
+    font-size: 2.2em; /* Um pouco menor para não competir com o H1 da sidebar */
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+/* --- Seção de Seleção --- */
+#selecao-veiculo {
+    background: linear-gradient(145deg, #ffffff, #e6e6e6);
+    padding: 20px 30px; /* Ajustado */
+    border-radius: 12px;
+    box-shadow: 5px 5px 15px #cacaca, -5px -5px 15px #ffffff;
+    margin-bottom: 30px; /* Ajustado */
+    text-align: center;
+    width: 100%; /* Ocupa a largura da content-area */
+    max-width: 800px; /* Aumentado um pouco */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#selecao-veiculo h2 {
+    color: #d21994;
+    margin-top: 0;
+    margin-bottom: 20px; /* Ajustado */
+    font-size: 1.3em; /* Ajustado */
+    font-weight: 600;
+}
+
+#selecao-veiculo button {
+    background-color: #dd63ff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 15px; /* Ajustado */
+    margin: 8px 5px; /* Ajustado */
+    cursor: pointer;
+    font-size: 0.95em; /* Ajustado */
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+}
+
+#selecao-veiculo button img {
+    height: 20px; /* Ajustado */
+    width: auto;
+    filter: brightness(1.1);
+}
+
+#selecao-veiculo button:hover {
+    background-color: #ff7ed4;
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 4px 4px 8px rgba(0,0,0,0.3);
+}
+
+#selecao-veiculo button:active {
+    transform: translateY(0px) scale(0.98);
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+
+#esconder-todos-btn {
+    background-color: #f436bb;
+    margin-top: 15px;
+}
+#esconder-todos-btn:hover {
+    background-color: #ff38de;
+}
+
+/* Layout da Garagem (onde os veículos aparecerão) */
+.garagem {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap; /* Permite que os cards quebrem linha se necessário */
+    width: 100%;
+    padding: 10px 0; /* Ajustado */
+}
+
+.veiculo {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px; /* Ajustado */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    width: 280px; /* Largura do card ajustada */
+    display: none;
+    flex-direction: column;
+    animation: fadeInScale 0.5s ease-out forwards;
+    margin: 15px; /* Margem para espaçamento entre cards */
+}
+
+.veiculo.visivel {
+    display: flex;
+}
+
+@keyframes fadeInScale {
+    0% { opacity: 0; transform: scale(0.95) translateY(10px); }
+    100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.veiculo h2 {
+    color: #ff00aa;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 5px;
+    font-size: 1.2em; /* Ajustado */
+    text-align: left;
+}
+
+.veiculo-img {
+    max-width: 120px; /* Ajustado */
+    height: auto;
+    display: block;
+    margin: 0 auto 15px auto; /* Ajustado */
+    border-radius: 5px;
+}
+
+#secao-garagem p { /* Especificidade para parágrafos dentro da seção garagem */
+    margin-bottom: 8px; /* Ajustado */
+    font-size: 0.9em; /* Ajustado */
+}
+
+#secao-garagem p span { /* Especificidade para spans dentro da seção garagem */
+    font-weight: bold;
+    color: #fd88c8;
+    background-color: #f8f9fa;
+    padding: 2px 6px; /* Ajustado */
+    border-radius: 4px;
+    display: inline-block;
+    min-width: 35px; /* Ajustado */
+    text-align: center;
+    border: 1px solid #dee2e6;
+    margin-left: 5px;
+}
+
+.velocidade-bar-container {
+    width: 100%;
+    height: 18px; /* Ajustado */
+    background-color: #e9ecef;
+    border: 1px solid #ced4da;
+    border-radius: 10px;
+    margin-top: 6px; /* Ajustado */
+    margin-bottom: 15px; /* Ajustado */
+    overflow: hidden;
+}
+
+.velocidade-bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(to right, #66bb6a, #388e3c);
+    border-radius: 9px;
+    transition: width 0.3s ease-out, background-color 0.3s ease;
+    text-align: center;
+    color: white;
+    font-size: 0.75em; /* Ajustado */
+    line-height: 18px; /* Ajustado */
+}
+
+.veiculo.turbo-active .velocidade-bar,
+.veiculo.boost-active .velocidade-bar {
+    background: linear-gradient(to right, #ffa726, #f57c00);
+}
+
+.controles {
+    margin-top: auto;
+    padding-top: 10px; /* Ajustado */
+    border-top: 1px solid #eee;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px; /* Ajustado */
+}
+
+.controles button {
+    background-color: #17a2b8;
+    color: #fff;
+    padding: 8px 10px; /* Ajustado */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.85em; /* Ajustado */
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    text-align: center;
+}
+
+.controles button:hover {
+    background-color: #117a8b;
+    transform: scale(1.03);
+}
+
+.controles button:disabled {
+    background-color: #adb5bd;
+    cursor: not-allowed;
+    transform: none;
+    opacity: 0.7;
+}
+
+.turbo-btn {
+    background-color: #ffc107;
+    color: #4d2c02; /* Melhor contraste */
+    grid-column: span 2;
+}
+.turbo-btn:hover {
+    background-color: #e0a800;
+}
+.turbo-btn.active {
+    background-color: #dc3545;
+    color: #fff;
+}
+.turbo-btn.active:hover {
+    background-color: #c82333;
+}
+
+/* Reset básico e fontes - ESTILOS DA GARAGEM INTELIGENTE UNIFICADA */
+* {
+    box-sizing: border-box;
+    /* margin: 0;  Já definido acima */
+    /* padding: 0; Já definido acima */
+}
+
+body { /* Este sobrescreve/complementa o body de cima */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Consistência */
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0; /* Garantir que não haja margens */
+}
+
+/* Layout Principal com Flexbox */
+.app-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Barra Lateral (Sidebar) */
+.sidebar {
+    width: 220px;
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    flex-shrink: 0;
+}
+
+.sidebar h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 1.5em;
+    color: #fff; /* Garante cor branca */
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0; /* Remove padding padrão da lista */
+}
+
+.sidebar li {
+    margin-bottom: 10px;
+}
+
+.sidebar .nav-button {
+    background: none;
+    border: none;
+    color: #eee;
+    padding: 10px 15px;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    font-size: 1em;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.sidebar .nav-button:hover {
+    background-color: #555;
+}
+
+.sidebar .nav-button.active {
+    background-color: #007bff;
+    color: #fff;
+    font-weight: bold;
+}
+
+/* Área de Conteúdo Principal */
+.content-area {
+    flex-grow: 1;
+    padding: 25px; /* Ajustado */
+    background-color: #fff;
+    overflow-y: auto; /* Permite scroll se o conteúdo for maior */
+}
+
+.content-area > section > h2 { /* h2 das seções principais */
+    margin-bottom: 20px;
+    color: #333;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 5px;
+    font-size: 1.6em; /* Ajustado */
+}
+
+/* Esconder seções inativas */
+.content-section {
+    display: none;
+}
+
+.content-section.active {
+    display: block;
+}
+
+/* Estilos básicos para formulários */
+form div {
+    margin-bottom: 15px;
+}
+
+form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+form input[type="text"],
+form input[type="number"],
+form input[type="date"],
+form select,
+form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.95em; /* Ajustado */
+}
+
+form button[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+form button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Estilos para a área de feedback */
+.feedback {
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.feedback.feedback-success { /* Mais especificidade para garantir aplicação */
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.feedback.feedback-error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.feedback.feedback-info {
+    background-color: #cce5ff;
+    color: #004085;
+    border: 1px solid #b8daff;
+}
+
+/* Estilos básicos para tabelas */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+/* Adicionar ao final do seu style.css */
+
+/* --- Estilos Modernos para Formulários e Seções de Manutenção --- */
+
+.modern-form .form-group {
+    margin-bottom: 20px; /* Aumenta o espaçamento entre os campos */
+}
+
+.modern-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600; /* Fonte um pouco mais forte */
+    color: #555;
+    font-size: 0.9em;
+}
+
+/* Estilo unificado para inputs, selects e textareas */
+.modern-form input[type="text"],
+.modern-form input[type="number"],
+.modern-form input[type="date"],
+.modern-form select,
+.modern-form textarea,
+#secao-historico select /* Para o select fora do modern-form */ {
+    width: 100%;
+    padding: 12px 15px; /* Padding interno maior */
+    border: 1px solid #ccc;
+    border-radius: 6px; /* Bordas mais arredondadas */
+    font-size: 1em;
+    color: #333;
+    background-color: #fff;
+    transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    appearance: none; /* Remove aparência padrão do select em alguns navegadores */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+/* Adiciona seta para selects (cross-browser) */
+#secao-historico select,
+.modern-form select {
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2220%22%20height%3D%2220%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M5%208l5%205%205-5z%22%20fill%3D%22%23555%22%2F%3E%3C%2Fsvg%3E');
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 12px;
+    padding-right: 40px; /* Espaço para a seta */
+}
+
+
+.modern-form input[type="text"]:focus,
+.modern-form input[type="number"]:focus,
+.modern-form input[type="date"]:focus,
+.modern-form select:focus,
+.modern-form textarea:focus,
+#secao-historico select:focus {
+    border-color: #007bff; /* Cor de destaque no foco */
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Sombra suave no foco */
+    outline: none;
+}
+
+.modern-form textarea {
+    resize: vertical; /* Permite redimensionar apenas verticalmente */
+    min-height: 80px;
+}
+
+/* Estilos para Botões */
+.btn {
+    padding: 10px 20px;
+    font-size: 1em;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    font-weight: 500;
+    display: inline-flex; /* Para alinhar ícones se adicionados */
+    align-items: center;
+    justify-content: center;
+    gap: 8px; /* Espaço entre texto e ícone */
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+}
+.btn-primary:hover {
+    background-color: #0056b3;
+    transform: translateY(-1px);
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+.btn-secondary:hover {
+    background-color: #545b62;
+    transform: translateY(-1px);
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: white;
+}
+.btn-danger:hover {
+    background-color: #c82333;
+    transform: translateY(-1px);
+}
+.btn-edit {
+    background-color: #ffc107;
+    color: #212529;
+}
+.btn-edit:hover {
+    background-color: #e0a800;
+    transform: translateY(-1px);
+}
+
+.btn-sm { /* Botão menor */
+    padding: 6px 12px;
+    font-size: 0.85em;
+}
+
+
+/* Layout para Filtro (Ex: Selecionar Veículo no Histórico) */
+.filter-group {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Espaço entre label, select e botão (se houver) */
+    margin-bottom: 25px;
+    background-color: #f8f9fa; /* Fundo sutil para o grupo de filtro */
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #eee;
+}
+.filter-group label {
+    margin-bottom: 0; /* Remove margem inferior do label aqui */
+    font-weight: 600;
+}
+.filter-group select {
+    flex-grow: 1; /* Faz o select ocupar o espaço disponível */
+    max-width: 400px; /* Limita a largura máxima */
+}
+
+/* Área de Exibição de Informações (Histórico, Agendamentos) */
+.info-display-area {
+    margin-top: 20px;
+}
+
+.info-display-area h3 { /* Para "Próximos Agendamentos" */
+    font-size: 1.3em;
+    color: #333;
+    margin-bottom: 15px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #eee;
+}
+
+.placeholder-text {
+    color: #777;
+    font-style: italic;
+    text-align: center;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px dashed #ddd;
+    border-radius: 6px;
+}
+
+/* Estilo de Card para itens de Histórico e Agendamento */
+.card {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    transition: box-shadow 0.2s ease-in-out;
+}
+.card:hover {
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.card h4 { /* Título dentro do card */
+    margin-top: 0;
+    margin-bottom: 12px;
+    font-size: 1.15em;
+    color: #007bff; /* Cor de destaque para o título do card */
+}
+
+.card p {
+    margin-bottom: 8px;
+    line-height: 1.5;
+    color: #555;
+}
+.card p strong {
+    color: #333;
+    font-weight: 600;
+}
+
+.card .actions { /* Para botões de editar/cancelar dentro de um card */
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+    text-align: right; /* Alinha botões à direita */
+}
+.card .actions .btn {
+    margin-left: 10px;
+}
+
+/* Ajustes específicos para a sidebar e área de conteúdo se necessário */
+.sidebar h1 {
+    color: #e9ecef; /* Cor mais clara para o título da sidebar */
+    font-weight: 300; /* Fonte mais leve */
+    letter-spacing: 1px;
+}
+.content-area > section > h2 { /* Títulos principais das seções */
+    font-weight: 600;
+    color: #343a40; /* Cor mais escura e sóbria */
+    letter-spacing: 0.5px;
+}
+/* No seu style.css, substitua ou adicione/modifique as regras para #selecao-veiculo */
+
+/* --- Seção de Seleção de Veículos - Estilo Chique --- */
+#selecao-veiculo {
+    background: #ffffff; /* Fundo branco limpo */
+    padding: 30px 40px; /* Mais padding interno */
+    border-radius: 16px; /* Bordas mais arredondadas */
+    /* Sombra mais suave e distribuída */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08), 0 4px 10px rgba(0, 0, 0, 0.05);
+    margin-bottom: 40px;
+    text-align: center;
+    width: 95%; /* Um pouco mais largo */
+    max-width: 850px; /* Limite máximo aumentado */
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid #e9ecef; /* Borda sutil para definição */
+}
+
+#selecao-veiculo h2 {
+    /* Cor mais elegante para o título - você pode usar uma cor tema do seu projeto */
+    color: #343a40; /* Um cinza escuro sofisticado */
+    margin-top: 0;
+    margin-bottom: 30px; /* Mais espaço abaixo do título */
+    font-size: 1.6em; /* Tamanho do título um pouco maior */
+    font-weight: 600; /* Peso da fonte */
+    letter-spacing: 0.5px; /* Leve espaçamento entre letras */
+}
+
+#selecao-veiculo .botoes-selecao-container { /* NOVO: Wrapper para os botões */
+    display: flex;
+    flex-wrap: wrap; /* Permite que os botões quebrem linha em telas menores */
+    justify-content: center; /* Centraliza os botões */
+    gap: 18px; /* Espaçamento entre os botões */
+}
+
+#selecao-veiculo button { /* Estilo base para todos os botões na seleção */
+    background-color: #f8f9fa; /* Um cinza muito claro, quase branco */
+    color: #495057; /* Cor do texto mais suave */
+    border: 1px solid #dee2e6; /* Borda sutil */
+    border-radius: 10px; /* Bordas dos botões mais arredondadas */
+    padding: 12px 22px; /* Padding interno dos botões */
+    margin: 0; /* Removida margem individual, controlada pelo gap do container */
+    cursor: pointer;
+    font-size: 1em; /* Tamanho da fonte nos botões */
+    font-weight: 500; /* Peso da fonte nos botões */
+    transition: all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1); /* Transição suave para tudo */
+    display: inline-flex;
+    align-items: center;
+    gap: 10px; /* Espaço entre imagem e texto no botão */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.04); /* Sombra muito sutil no botão */
+    min-width: 160px; /* Largura mínima para melhor visualização */
+    justify-content: center; /* Centraliza conteúdo do botão */
+}
+
+#selecao-veiculo button img {
+    height: 24px; /* Tamanho da imagem/ícone um pouco maior */
+    width: auto;
+    opacity: 0.7; /* Ícones um pouco mais sutis */
+    transition: opacity 0.25s ease;
+}
+
+#selecao-veiculo button:hover {
+    background-color: #e9ecef; /* Cor de fundo ao passar o mouse */
+    border-color: #ced4da;
+    color: #212529; /* Cor do texto mais escura no hover */
+    transform: translateY(-2px); /* Leve elevação */
+    box-shadow: 0 5px 12px rgba(0,0,0,0.08); /* Sombra mais pronunciada no hover */
+}
+
+#selecao-veiculo button:hover img {
+    opacity: 1; /* Ícones com opacidade total no hover */
+}
+
+#selecao-veiculo button:active {
+     transform: translateY(0px) scale(0.98); /* Efeito de clique */
+     box-shadow: 0 2px 5px rgba(0,0,0,0.06);
+}
+
+/* Estilo específico para o botão de esconder, se quiser diferenciá-lo */
+#esconder-todos-btn {
+    background-color: #6c757d; /* Um cinza diferente, ou uma cor tema */
+    color: white;
+    border-color: #6c757d;
+    margin-top: 25px; /* Espaço acima do botão de esconder */
+    /* Para ocupar a largura se for o único na linha */
+    /* width: auto;
+    min-width: 200px; */
+}
+
+#esconder-todos-btn:hover {
+    background-color: #5a6268;
+    border-color: #545b62;
+    box-shadow: 0 5px 12px rgba(0,0,0,0.1);
+}
+
+/* Opcional: Estilo para um botão de seleção "ativo" se você quiser marcar qual está selecionado */
+/* Você precisaria de JS para adicionar/remover a classe 'active-selection-btn' */
+/*
+#selecao-veiculo button.active-selection-btn {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+    box-shadow: 0 3px 8px rgba(0, 123, 255, 0.3);
+}
+#selecao-veiculo button.active-selection-btn img {
+    opacity: 1;
+    filter: brightness(0) invert(1); // Para ícones escuros ficarem brancos
+}
+*/
+
+/* No início do seu style.css, ou onde você define as variáveis de cor e fontes globais */
+:root {
+    --cor-primaria: #D81B60; /* Um rosa mais forte e elegante (Ex: Barbie Pink mais sofisticado) */
+    --cor-primaria-hover: #c2185b;
+    --cor-secundaria: #4A148C; /* Um roxo profundo para contraste ou detalhes (opcional) */
+    --cor-texto-principal: #333;
+    --cor-texto-secundario: #555;
+    --cor-fundo-claro: #f8f9fa; /* Um cinza muito claro, quase branco */
+    --cor-fundo-pagina: #eef2f7; /* Um azul acinzentado muito claro para o fundo geral */
+    --cor-borda-sutil: #e0e0e0;
+    --sombra-padrao: 0 4px 15px rgba(0, 0, 0, 0.08);
+    --sombra-hover: 0 6px 20px rgba(0, 0, 0, 0.12);
+    --border-radius-padrao: 12px; /* Bordas mais arredondadas */
+    --fonte-principal: 'Montserrat', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Exemplo de fonte elegante */
+}
+
+/* Importar a fonte Montserrat do Google Fonts (adicione isso no <head> do seu HTML ou no topo do CSS) */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+body {
+    font-family: var(--fonte-principal);
+    background-color: var(--cor-fundo-pagina);
+    margin: 0;
+    color: var(--cor-texto-principal);
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+/* --- Título Principal da Garagem da Barbie --- */
+#secao-garagem > h1 {
+    text-align: center;
+    color: var(--cor-primaria);
+    margin-bottom: 40px; /* Mais espaço */
+    font-size: 2.8em; /* Maior e mais impactante */
+    font-weight: 700; /* Mais peso */
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+}
+
+/* --- Seção de Seleção de Veículos (Já estilizada anteriormente, vamos refinar) --- */
+#selecao-veiculo {
+    background: #ffffff;
+    padding: 35px 45px;
+    border-radius: var(--border-radius-padrao);
+    box-shadow: var(--sombra-padrao);
+    margin-bottom: 50px; /* Mais espaço abaixo */
+    text-align: center;
+    width: 95%;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid var(--cor-borda-sutil);
+}
+
+#selecao-veiculo h2 {
+    color: var(--cor-texto-principal); /* Usar cor de texto padrão para o título interno */
+    margin-top: 0;
+    margin-bottom: 35px;
+    font-size: 1.8em;
+    font-weight: 600;
+}
+
+#selecao-veiculo .botoes-selecao-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px; /* Espaçamento entre os botões */
+}
+
+#selecao-veiculo button {
+    background-color: var(--cor-fundo-claro);
+    color: var(--cor-texto-secundario);
+    border: 1px solid var(--cor-borda-sutil);
+    border-radius: 10px;
+    padding: 15px 25px; /* Mais padding */
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    min-width: 180px; /* Largura mínima */
+    justify-content: center;
+}
+
+#selecao-veiculo button img {
+    height: 28px; /* Ícones maiores */
+    width: auto;
+    opacity: 0.8;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+#selecao-veiculo button:hover {
+    background-color: var(--cor-primaria);
+    border-color: var(--cor-primaria);
+    color: white;
+    transform: translateY(-3px) scale(1.03); /* Efeito de elevação e zoom sutil */
+    box-shadow: var(--sombra-hover);
+}
+
+#selecao-veiculo button:hover img {
+    opacity: 1;
+    transform: scale(1.1); /* Ícone aumenta um pouco no hover */
+}
+
+#selecao-veiculo button:active {
+     transform: translateY(0px) scale(0.99);
+     box-shadow: 0 2px 5px rgba(0,0,0,0.06);
+}
+
+#esconder-todos-btn {
+    background-color: #6c757d;
+    color: white;
+    border-color: #6c757d;
+    margin-top: 30px;
+}
+#esconder-todos-btn:hover {
+    background-color: #5a6268;
+    border-color: #545b62;
+}
+
+
+/* --- Layout da Garagem e Card do Veículo --- */
+.garagem {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 20px 0;
+    gap: 20px;
+    position: relative;
+    min-height: 500px; /* Altura para acomodar o card destacado */
+    justify-content: center; /* Centraliza o card quando é o único visível */
+}
+
+.veiculo {
+    background-color: #ffffff;
+    border: 1px solid var(--cor-borda-sutil);
+    border-radius: var(--border-radius-padrao);
+    padding: 25px; /* Mais padding interno no card */
+    box-shadow: var(--sombra-padrao);
+    width: 300px; /* Largura padrão do card */
+    display: none;
+    flex-direction: column;
+    animation: fadeInScaleCard 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards; /* Animação mais suave */
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), 
+                box-shadow 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    z-index: 1;
+}
+
+@keyframes fadeInScaleCard { /* Renomeado para evitar conflito se houver outro fadeInScale */
+    0% {
+        opacity: 0;
+        transform: scale(0.9) translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.veiculo.visivel {
+    display: flex;
+}
+
+/* Veículo em destaque (maior) */
+.veiculo.destacado {
+    display: flex !important;
+    transform: scale(1.12); /* Aumento um pouco mais sutil */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15); /* Sombra mais impactante */
+    z-index: 10;
+    /* Se usar position absolute para centralizar, ajuste o .garagem */
+    /* Para simplificar, vamos manter o fluxo e deixar o .garagem com justify-content: center */
+}
+/* Se o .veiculo.destacado for o único elemento no .garagem,
+   e .garagem tiver justify-content: center e align-items: center (ou flex-start),
+   ele já ficará centralizado na área visível. */
+
+
+.veiculo h2 { /* Título dentro do card do veículo */
+    color: var(--cor-primaria);
+    margin-top: 0;
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--cor-primaria-hover);
+    padding-bottom: 10px;
+    font-size: 1.5em; /* Título do card um pouco maior */
+    font-weight: 600;
+    text-align: left;
+}
+
+.veiculo-img {
+    max-width: 160px; /* Imagem do veículo maior */
+    height: auto;
+    display: block;
+    margin: 0 auto 25px auto;
+    border-radius: 8px; /* Borda suave na imagem */
+    /* object-fit: cover; /* Para garantir que a imagem preencha o espaço se tiver proporções diferentes */
+}
+
+/* Estilos para os parágrafos de informação dentro do card */
+#secao-garagem .veiculo p {
+    margin-bottom: 12px;
+    font-size: 0.95em;
+    color: var(--cor-texto-secundario);
+    display: flex; /* Para alinhar label e valor */
+    justify-content: space-between; /* Espaça label e valor */
+    align-items: center;
+    padding-bottom: 8px;
+    border-bottom: 1px dashed #eee; /* Linha sutil entre os itens */
+}
+#secao-garagem .veiculo p:last-of-type { /* Remove a borda do último <p> antes dos controles */
+    border-bottom: none;
+    margin-bottom: 18px; /* Mais espaço antes dos controles */
+}
+/* Se houver um p com barra de velocidade/carga, ele não será o último "texto puro" */
+#secao-garagem .veiculo p:has(+ .velocidade-bar-container) {
+    border-bottom: none; /* Remove borda se o próximo for a barra */
+}
+#secao-garagem .veiculo p:has(+ .controles) { /* Remove a borda do último <p> antes dos controles */
+    border-bottom: none;
+}
+
+
+#secao-garagem .veiculo p span { /* Valor da informação */
+    font-weight: 600;
+    color: var(--cor-texto-principal);
+    background-color: transparent; /* Remover fundo do span se não quiser destaque */
+    padding: 3px 0px; /* Ajustar padding */
+    border-radius: 0;
+    border: none;
+    min-width: 50px;
+    text-align: right; /* Alinha valor à direita */
+}
+
+/* Barra de Velocidade */
+.velocidade-bar-container {
+    width: 100%;
+    height: 22px; /* Barra um pouco mais alta */
+    background-color: #e9ecef;
+    border: 1px solid var(--cor-borda-sutil);
+    border-radius: 22px; /* Totalmente arredondada */
+    margin-top: 10px;
+    margin-bottom: 25px;
+    overflow: hidden;
+    position: relative; /* Para texto interno se necessário */
+}
+
+.velocidade-bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(to right, #81C784, #4CAF50); /* Gradiente verde mais suave */
+    border-radius: 22px;
+    transition: width 0.4s ease-out, background-color 0.4s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 0.8em;
+    font-weight: 500;
+}
+/* Texto dentro da barra (opcional) */
+/* .velocidade-bar::after {
+    content: attr(data-progress) "%";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+} */
+
+
+.veiculo.turbo-active .velocidade-bar,
+.veiculo.boost-active .velocidade-bar {
+    background: linear-gradient(to right, #FFB74D, #FF9800); /* Gradiente laranja mais suave */
+}
+
+/* Controles (Botões internos do card) */
+.controles {
+    margin-top: auto; /* Empurra para o final do card */
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Colunas responsivas */
+    gap: 12px; /* Espaçamento entre botões de controle */
+}
+
+.controles button {
+    background-color: var(--cor-fundo-claro);
+    color: var(--cor-texto-secundario);
+    padding: 12px 10px; /* Padding ajustado */
+    border: 1px solid var(--cor-borda-sutil);
+    border-radius: 8px; /* Bordas mais suaves */
+    cursor: pointer;
+    font-size: 0.9em;
+    font-weight: 500;
+    transition: all 0.25s ease;
+    text-align: center;
+}
+
+.controles button:hover {
+    background-color: var(--cor-primaria-hover);
+    color: white;
+    border-color: var(--cor-primaria-hover);
+    transform: scale(1.05); /* Efeito de zoom sutil */
+}
+
+.controles button:disabled {
+    background-color: #e9ecef;
+    color: #adb5bd;
+    cursor: not-allowed;
+    transform: none;
+    opacity: 0.7;
+    border-color: #dee2e6;
+}
+
+.turbo-btn { /* Botão Turbo/Boost */
+    background-color: var(--cor-secundaria); /* Roxo para destaque */
+    color: white;
+    border-color: var(--cor-secundaria);
+    grid-column: span 2; /* Ocupa duas colunas no grid */
+    font-weight: 600; /* Mais destaque */
+}
+.turbo-btn:hover {
+    background-color: #380f6b; /* Roxo mais escuro no hover */
+    border-color: #380f6b;
+}
+.turbo-btn.active {
+     background-color: #f57c00; /* Laranja quando ativo */
+     border-color: #f57c00;
+     color: white;
+}
+.turbo-btn.active:hover {
+     background-color: #ef6c00;
+     border-color: #ef6c00;
+}
+
+/* --- Outros Estilos da Garagem Unificada (Sidebar, Formulários, etc.) --- */
+/* Mantenha os estilos que você já tem para .app-container, .sidebar, .content-area,
+   .modern-form, .card (para histórico/agendamento), etc.
+   A paleta de cores definida no :root pode ser aplicada a eles também para consistência.
+   Exemplo: */
+
+.sidebar {
+    background-color: #2c3e50; /* Um azul escuro para a sidebar */
+    /* ... outros estilos ... */
+}
+.sidebar h1 {
+    color: #ecf0f1; /* Texto claro na sidebar */
+    font-weight: 500;
+}
+.sidebar .nav-button {
+    color: #bdc3c7; /* Cor mais suave para botões da nav */
+    border-radius: 6px;
+    padding: 12px 18px;
+}
+.sidebar .nav-button:hover {
+    background-color: rgba(236, 240, 241, 0.1); /* Hover sutil */
+    color: #fff;
+}
+.sidebar .nav-button.active {
+    background-color: var(--cor-primaria);
+    color: #fff;
+    font-weight: 600;
+}
+
+.content-area > section > h2 { /* Títulos principais das seções */
+    font-weight: 600;
+    color: #2c3e50; /* Cor alinhada com a sidebar ou tema */
+    letter-spacing: 0.5px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--cor-primaria); /* Borda com cor primária */
+}
+/* No seu style.css */
+
+body {
+    font-family: var(--fonte-principal);
+    background-color: var(--cor-fundo-pagina);
+    margin: 0;
+    color: var(--cor-texto-principal);
+    line-height: 1.6;
+    
+    /* NOVAS ou AJUSTADAS PROPRIEDADES PARA O BODY */
+    display: flex;
+    flex-direction: column; /* Organiza os filhos diretos (app-container e footer) em coluna */
+    min-height: 100vh; /* Garante que o body ocupe pelo menos a altura da tela */
+}
+
+.app-container {
+    display: flex; /* Já estava assim, o que é bom */
+    /* min-height: 100vh;  << REMOVA OU COMENTE ESTA LINHA DO .app-container */
+                       /*   Agora o body controla a altura total e o app-container vai crescer */
+    flex-grow: 1; /* FAZ O .app-container OCUPAR O ESPAÇO DISPONÍVEL, EMPURRANDO O FOOTER PARA BAIXO */
+}
+
+/* --- Estilo do Rodapé --- */
+.site-footer {
+    background-color: #5f4561;
+    color: #bdc3c7;
+    text-align: center; /* Centraliza o texto DENTRO do footer */
+    padding: 25px 0; /* Aumentei um pouco o padding vertical para mais respiro */
+    font-size: 0.9em;
+    width: 100%;
+    /* flex-shrink: 0; /* Garante que o footer não encolha se houver pouco espaço (opcional aqui) */
+}
+
+.site-footer p {
+    margin: 0;
+    padding: 0;
+    letter-spacing: 0.5px;
+}
